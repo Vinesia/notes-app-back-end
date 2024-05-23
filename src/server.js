@@ -1,14 +1,16 @@
+// src/server.js
+
 const Hapi = require('@hapi/hapi');
-const routes = require('./route/routes');
+const routes = require('../src/route/routes'); // Pastikan path-nya benar
 
 const init = async () => {
     const server = Hapi.server({
         port: 5000,
         host: 'localhost',
         routes: {
-        cors: {
-            origin: ['*'],
-        },
+            cors: {
+                origin: ['*'],
+            },
         },
     });
 
@@ -16,6 +18,13 @@ const init = async () => {
 
     await server.start();
     console.log(`Server berjalan pada ${server.info.uri}`);
+
+    return server;
 };
 
-init();
+process.on('unhandledRejection', (err) => {
+    console.log(err);
+    process.exit(1);
+});
+
+module.exports = init();

@@ -1,4 +1,4 @@
-// route/routes.js
+// src/route/routes.js
 
 const {
     addNoteHandler,
@@ -9,13 +9,6 @@ const {
 } = require('../handle/handler');
 
 const routes = [
-    {
-        method: 'POST',
-        path: '/notes',
-        handler: (request, h) => {
-            return 'Vinesia Prahesti Adiyaningtyas';
-        },
-    },
     {
         method: 'POST',
         path: '/notes',
