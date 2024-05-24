@@ -1,12 +1,10 @@
-// src/server.js
-
 const Hapi = require('@hapi/hapi');
-const routes = require('../src/route/routes'); // Pastikan path-nya benar
+const routes = require('../src/route/routes');
 
 const init = async () => {
     const server = Hapi.server({
         port: 5000,
-        host: 'localhost',
+        host: cross.env.NODE_ENV !== 'production' ? 'localhot' : '0.0.0.0',
         routes: {
             cors: {
                 origin: ['*'],
